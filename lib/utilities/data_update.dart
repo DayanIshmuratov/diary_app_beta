@@ -3,10 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class DataUpdate {
 
-  static void justChecker() {
-
-  }
-
   static void counterUpdate()async{
     await FirebaseFirestore.instance.collection("UsersData")
         .doc("${FirebaseAuth.instance.currentUser?.uid}")
