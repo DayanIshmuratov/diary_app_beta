@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:diary_app/models/data_story.dart';
 import 'package:flutter/material.dart';
 
-
 class StoryScreen extends StatelessWidget {
   final DataStory dataStory;
   const StoryScreen(this.dataStory);

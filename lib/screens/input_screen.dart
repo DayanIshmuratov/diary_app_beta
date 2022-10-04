@@ -1,8 +1,6 @@
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:diary_app/models/user_info.dart';
-import 'package:diary_app/models/data.dart';
-import 'package:diary_app/models/hints.dart';
 import 'package:diary_app/utilities/data_receiver.dart';
 import 'package:diary_app/utilities/data_setter.dart';
 import 'package:diary_app/utilities/data_update.dart';
@@ -10,7 +8,6 @@ import 'package:diary_app/utilities/field_focus_change.dart';
 import 'package:diary_app/utilities/validators.dart';
 import 'package:diary_app/widgets/dialogs.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
@@ -26,6 +23,8 @@ class InputScreen extends StatefulWidget {
 
 class _InputScreenState extends State<InputScreen> {
   final _formKey = GlobalKey<FormState>();
+
+  bool isSaving = false;
 
   final _titleFocus = FocusNode();
   final _textFocus = FocusNode();
@@ -65,7 +64,7 @@ class _InputScreenState extends State<InputScreen> {
           title: Text("Введите историю"),
           actions: [
             IconButton(onPressed: () async{
-              userData = await DataReceiver.getUserData();
+
               List<String> hints = userData.hints;
               if (hints.isNotEmpty) {
                 await chooseHint(hints);
@@ -129,9 +128,17 @@ class _InputScreenState extends State<InputScreen> {
                       },
                       child: isDate ? Text("$formattedDate") : const Icon(Icons.date_range, color: Colors.black,),
                     ),
+                    isSaving ?
+                        ElevatedButton(onPressed: (){}, child: Center(child: SizedBox(height: 10,width: 10, child: CircularProgressIndicator(strokeWidth : 0.7, color: Colors.black87,),)),
+                        )
+                        :
                     ElevatedButton(
                       onPressed: () async{
-                         if(_formKey.currentState!.validate()) {
+                         if (_formKey.currentState!.validate()) {
+                         setState((){
+                           isSaving = true;
+                         });
+                         userData = await DataReceiver.getUserData();
                          DataUpdate.counterUpdate();
                          await DataSetter.addStory(text: textController.text, title: titleController.text, userData: userData, formattedDate: formattedDate);
                          if (toDelete.isNotEmpty){
@@ -164,31 +171,6 @@ class _InputScreenState extends State<InputScreen> {
     );
   }
 
-  // Future<void> getUserInfo() async {
-  //   await FirebaseFirestore.instance.collection("UsersData")
-  //       .doc("${FirebaseAuth.instance.currentUser?.uid}")
-  //       .get()
-  //       .then((DocumentSnapshot documentSnapshot) {
-  //       userData = UserData.fromDoc(documentSnapshot);
-  //   });
-  // }
-
-  // void counterUpdate()async{
-  //   await FirebaseFirestore.instance.collection("UsersData")
-  //       .doc("${FirebaseAuth.instance.currentUser?.uid}")
-  //       .update({"counterOfStory": FieldValue.increment(1)});
-  // }
-
- //  Future<void> addStory({required String text, required String title})
- //  async {
- //    userData = await DataReceiver.getUserData();
- //    int counter = userData.counterOfStory;
- //    await FirebaseFirestore.instance.collection("UsersData")
- //        .doc("${FirebaseAuth.instance.currentUser?.uid}")
- //        .collection("UserStories")
- //        .doc()
- //        .set({"title": title, "text": text, "date" : formattedDate, "counterOfStory" : counter});
- // }
 
   Future _showCalendar(BuildContext context) async{
     final newDate =  await showDatePicker(
@@ -391,7 +373,6 @@ class _InputScreenState extends State<InputScreen> {
     await FirebaseFirestore.instance.collection("UsersData")
         .doc("${FirebaseAuth.instance.currentUser?.uid}")
         .update({
-      "hints" : hints,
-    });
+      "hints" : hints,});
   }
 }

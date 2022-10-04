@@ -7,14 +7,11 @@ import 'package:diary_app/screens/forgot_password_screen.dart';
 import 'package:diary_app/screens/input_screen.dart';
 import 'package:diary_app/screens/login_screen.dart';
 import 'package:diary_app/screens/main_screen.dart';
-import 'package:diary_app/api/notifications.dart';
 import 'package:diary_app/screens/profile_screen.dart';
 import 'package:diary_app/screens/signup_screen.dart';
 import 'package:diary_app/screens/story_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:timezone/data/latest.dart' as tz;
 
 
