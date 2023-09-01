@@ -63,9 +63,9 @@ class _MainScreenState extends State<MainScreen> {
         ),
       ),
       body:
-      FutureBuilder<List<DataStory>>(
-          future: DataReceiver.getStory(),
-          builder: (context, snapshot) {
+    FutureBuilder<List<DataStory>>(
+        future: DataReceiver.getStory(),
+        builder: (context, snapshot) {
             if (snapshot.hasError) {
               return Text(
                 '${snapshot.error}', style: TextStyle(color: Colors.white),);

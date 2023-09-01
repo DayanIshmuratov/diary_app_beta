@@ -1,16 +1,24 @@
-# diary_app
 
-A new Flutter project.
+# DiaryApp
 
-## Getting Started
+This is a simple diary application where beginners can get help if they don't know what to write about.
 
-This project is a starting point for a Flutter application.
+## UI
+  <div align="center">  <img src="https://i.imgur.com/ylGC3y1.png" width="1000" height="500"/> 
+  <div align="center">  <img src="https://i.imgur.com/hPLbMid.png" width="1000" height="500"/> 
+  <div align="center">  <img src="https://i.imgur.com/ORkjAs9.png" width="1000" height="500"/>
+    <div align="center">  <img src="https://i.imgur.com/2ZYmlnY.png" width="1000" height="500"/>  
+  <div align="center">  <img src="https://i.imgur.com/llwPPck.png" width="1000" height="500"/> 
+    <div align="center">  <img src="https://i.imgur.com/fIyp3Vh.png" width="1000" height="500"/> 
 
-A few resources to get you started if this is your first Flutter project:
+ </div>
+ 
+--- 
+### :hammer_and_wrench: Languages and Tools :
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+ <div> 
+ <img src="https://github.com/devicons/devicon/blob/master/icons/flutter/flutter-original.svg" title="Flutter" alt="Flutter" width="40" height="40"/>&nbsp;
+ <img src="https://github.com/devicons/devicon/blob/master/icons/firebase/firebase-plain.svg" title="Firebase" alt="Firebase" width="40" height="40"/>&nbsp;  
+  <img src="https://github.com/devicons/devicon/blob/master/icons/git/git-original.svg" title="Git" alt="Git" width="40" height="40"/>&nbsp;    
+ <img src="https://github.com/devicons/devicon/blob/master/icons/figma/figma-original.svg" title="Figma" alt="Figma" width="40" height="40"/> 
+ </div>
